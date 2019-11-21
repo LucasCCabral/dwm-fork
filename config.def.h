@@ -59,6 +59,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *mutecmd[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "sset", "PCM", "5-", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "sset", "PCM", "5+", "unmute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -95,6 +98,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ 0,                       0x1008ff12,      spawn,          {.v = mutecmd } },
+	{ 0,                       0x1008ff11,      spawn,          {.v = volupcmd } },
+	{ 0,                       0x1008ff13,      spawn,          {.v = voldowncmd } },
 };
 
 /* button definitions */
