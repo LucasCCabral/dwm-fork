@@ -62,6 +62,9 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *mutecmd[] = { "amixer", "-q", "sset", "Master", "toggle", NULL };
 static const char *volupcmd[] = { "amixer", "-q", "sset", "PCM", "5-", "unmute", NULL };
 static const char *voldowncmd[] = { "amixer", "-q", "sset", "PCM", "5+", "unmute", NULL };
+static const char *stopsongspotifycmd[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause", NULL};
+static const char *nextsongspotifycmd[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next", NULL};
+static const char *previoussongspotifycmd[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -101,6 +104,9 @@ static Key keys[] = {
 	{ 0,                       0x1008ff12,      spawn,          {.v = mutecmd } },
 	{ 0,                       0x1008ff11,      spawn,          {.v = volupcmd } },
 	{ 0,                       0x1008ff13,      spawn,          {.v = voldowncmd } },
+	{ 0,                       0x1008ff14,      spawn,          {.v = stopsongspotifycmd } },
+	{ 0,                       0x1008ff17,      spawn,          {.v = nextsongspotifycmd } },
+	{ 0,                       0x1008ff16,      spawn,          {.v = previoussongspotifycmd } },
 };
 
 /* button definitions */
