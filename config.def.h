@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -28,12 +28,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",             NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",          NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Emacs",            NULL,       NULL,       1,            0,           -1 },
+	{ "jetbrains-studio", NULL,       NULL,       1,            0,           -1 },
 	{ "qutebrowser",      NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Slack",            NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "jetbrains-studio", NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "TelegramDesktop",  NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Zathura",          NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Slack",            NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "TelegramDesktop",  NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "vlc",              NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -69,12 +70,13 @@ static const char *voldowncmd[] = { "amixer", "-q", "sset", "PCM", "5+", "unmute
 static const char *stopsongspotifycmd[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.PlayPause", NULL};
 static const char *nextsongspotifycmd[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Next", NULL};
 static const char *previoussongspotifycmd[] = { "dbus-send", "--print-reply", "--dest=org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", "org.mpris.MediaPlayer2.Player.Previous", NULL};
-static const char *slockcmd[]  = { "slock", NULL };
+static const char *slockcmd[]  = { "sleep_or_lock", NULL };
+static const char sleep_or_lock[] = "~/.config/mydotfiles/scripts/sleep_or_lock.sh";
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_s,      spawn,          {.v = slockcmd } },
+	{ MODKEY,                       XK_s,      spawn,          SHCMD(sleep_or_lock)},
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
