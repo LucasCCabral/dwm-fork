@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "*"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -31,10 +31,10 @@ static const Rule rules[] = {
 	{ "Emacs",            NULL,       NULL,       1,            0,           -1 },
 	{ "jetbrains-studio", NULL,       NULL,       1,            0,           -1 },
 	{ "qutebrowser",      NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Zathura",          NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Slack",            NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "TelegramDesktop",  NULL,       NULL,       1 << 6,       0,           -1 },
-	{ "vlc",              NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Zathura",          NULL,       NULL,       1 << 2,       0,           -1 },
+	{ "Slack",            NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "TelegramDesktop",  NULL,       NULL,       1 << 4,       0,           -1 },
+	{ "vlc",              NULL,       NULL,       1 << 6,       0,           -1 },
 };
 
 /* layout(s) */
